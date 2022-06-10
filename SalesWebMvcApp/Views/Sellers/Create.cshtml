@@ -1,0 +1,58 @@
+﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel //falamos q a minha view temos a disposicao dela o Seller
+
+@{
+    ViewData["Title"] = "Create";
+
+    //O nome da view deve ser igual ao metodo do SellersController
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <!--abaixo chamaremos o metodo create, mas do post e nao do get como no index no button
+            Create New-->
+        <form asp-action="Create">
+            <!--essa validacao serve para que todos os erros sejam listados nessa div; para ela funcionar em nivel de js, ou seja, lado do cliente precisa chamar a validacao no final-->
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <!--usamos o asp-for para -->
+                <label asp-for="Seller.Name" class="control-label"></label>
+                <input asp-for="Seller.Name" name="Name" class="form-control" />
+                <!--a validacao abaixo mostra o erro de cada campo e a medida que vai digitando ele vai mudando ou sumindo o erro auto-->
+                <span asp-validation-for="Seller.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.Email" class="control-label"></label>
+                <input asp-for="Seller.Email" name="Email" class="form-control" />
+                <span asp-validation-for="Seller.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.BirthDate" class="control-label"></label>
+                <input asp-for="Seller.BirthDate" name="BirthDate" class="form-control" />
+                <span asp-validation-for="Seller.BirthDate" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.BaseSalary" class="control-label"></label>
+                <input asp-for="Seller.BaseSalary" name="BaseSalary" class="form-control" />
+                <span asp-validation-for="Seller.BaseSalary" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.Department" class="control-label"></label>
+                <!--select list recebe tres argumentos, fonte de dados, qual attr desse objeto vai ser a chave, qual attr vai aparecer na caixinha de selecao-->
+                <select name="DepartmentId" asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id", "Name"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Create" class="btn btn-default">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--o js abaixo ira habilitar o lado do cliente para nos mostrarmos os erros possiveis-->
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

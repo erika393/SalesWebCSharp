@@ -1,0 +1,79 @@
+﻿@model SalesWebMvc.Models.Seller
+@using SalesWebMvc.Models
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <h4>Seller</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <!--lista os campos dos objetos-->
+        <dt>
+            <!--nome do campo-->
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            <!--valor do campo-->
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            <!--nome do campo-->
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            <!--valor do campo-->
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            <!--nome do campo-->
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd>
+            <!--valor do campo-->
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt>
+            <!--nome do campo-->
+            @Html.DisplayNameFor(model => model.BaseSalary)
+        </dt>
+        <dd>
+            <!--valor do campo-->
+            @Html.DisplayFor(model => model.BaseSalary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd>
+            <!--valor do campo-->
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sales)
+        </dt>
+        <dd>
+            @if ((Model.Sales).Count < 1)
+            {
+                <p>0</p>
+            }
+            else
+            {
+                @foreach (SalesRecord obj in Model.Sales)
+                {
+                    <div>obj</div>
+                }
+            }
+        </dd>
+        
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" name="Id"/> <!--aqui eh onde sera passado o id do seller que sera deletado-->
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+        <a asp-action="Index">Back To List</a>
+    </form>
+</div>

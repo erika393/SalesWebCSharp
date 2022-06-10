@@ -1,0 +1,42 @@
+﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel //falamos q a minha view temos a disposicao dela o Seller
+
+@using SalesWebMvc.Models;
+
+@{
+    ViewData["Title"] = "Sign In";
+
+    //O nome da view deve ser igual ao metodo do SellersController
+}
+
+<h2>@ViewData["Title"]</h2>>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <!--abaixo chamaremos o metodo create, mas do post e nao do get como no index no button
+            Create New-->
+        <form asp-action="Login">
+            <!--essa validacao serve para que todos os erros sejam listados nessa div; para ela funcionar em nivel de js, ou seja, lado do cliente precisa chamar a validacao no final-->
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <!--usamos o asp-for para -->
+                <label asp-for="Seller.Email" class="control-label"></label>
+                <input type="email" asp-for="Seller.Email" name="Email" class="form-control" />
+                <!--a validacao abaixo mostra o erro de cada campo e a medida que vai digitando ele vai mudando ou sumindo o erro auto-->
+                <span asp-validation-for="Seller.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.Password" class="control-label"></label>
+                <input type="password" asp-for="Seller.Password" name="Password" class="form-control" />
+                <span asp-validation-for="Seller.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Create" class="btn btn-default">Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--o js abaixo ira habilitar o lado do cliente para nos mostrarmos os erros possiveis-->
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

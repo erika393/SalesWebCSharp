@@ -1,0 +1,41 @@
+﻿@model SalesWebMvc.Models.ViewModels.SalesRecordFormViewModel 
+
+@{
+    ViewData["Title"] = "New Sale";
+
+    //O nome da view deve ser igual ao metodo do SellersController
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Sale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <!--abaixo chamaremos o metodo create, mas do post e nao do get como no index no button
+        Create New-->
+        <form asp-action="NewSale" asp-route-id="@Model.SellerId">
+            <!--edit no metodo post-->
+            <input type="hidden" asp-for="@Model.SellerId"  name="Id" />
+            <div class="form-group">
+                <label asp-for="SalesRecord.Date" class="control-label"></label>
+                <input asp-for="SalesRecord.Date" name="Date" class="form-control" />
+                <span asp-validation-for="SalesRecord.Date" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesRecord.Amount" class="control-label"></label>
+                <input asp-for="SalesRecord.Amount" name="Amount" class="form-control" />
+                <span asp-validation-for="SalesRecord.Amount" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Save" class="btn btn-default">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--o js abaixo ira habilitar o lado do cliente para nos mostrarmos os erros possiveis-->
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
