@@ -35,7 +35,6 @@ namespace SalesWebMvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //fazer try catch para list null
             User user = _userService.FindByEmail(User.Identity.Name);
             if (user == null)
             {
@@ -52,15 +51,13 @@ namespace SalesWebMvc.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var departments = await _departmentService.FindAllAsync(); //busca do db todos os departamentos
+            var departments = await _departmentService.FindAllAsync(); 
             var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
-            //agr a nossa tela ja vai receber o department quando cadastrar a 1x
         }
 
-        [HttpPost] //para dizermos q eh um metodo post, se fosse get n precisaria colocar
-        [ValidateAntiForgeryToken] //metodo de segurança p q n usem o token de validacao para
-        //enviar dados maliciosos
+        [HttpPost] 
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Create(Seller obj)
         {
             if (!ModelState.IsValid)
@@ -89,7 +86,7 @@ namespace SalesWebMvc.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
-            var obj = _sellerService.FindById(id.Value); //pra pegar o valor dele caso existe, por ser opcional
+            var obj = _sellerService.FindById(id.Value); 
             if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
@@ -127,7 +124,6 @@ namespace SalesWebMvc.Controllers
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" }); ;
             }
-
             return View(obj);
         }
 

@@ -55,21 +55,30 @@ namespace SalesWebMvc.Services
                 .ToListAsync();
         }
 
-        public async Task<int> GetNewId()
+        public int GetNewId()
         {
             var listCount = _context.SalesRecord.ToList().Count;
             if (listCount < 1)
             {
                 return 1;
             }
-            var lastId = (await _context.SalesRecord.LastAsync()).Id;
-            //precisa colocar await para falar ao compilador q essa chamada eh assincrona
+            var lastId = _context.SalesRecord.LastAsync().Id;
             return lastId + 1;
+        }
+
+        public bool ExistId(int id)
+        {
+            return _context.SalesRecord.Any(obj => obj.Id == id);
         }
         public void Insert(SalesRecord obj)
         {
             _context.Add(obj);
             _context.SaveChanges();
+        }
+
+        public int FindAllBySellerId(int id)
+        {
+            return _context.SalesRecord.ToList().FindAll(obj => obj.Seller.Id == id).Count;
         }
     }
 }

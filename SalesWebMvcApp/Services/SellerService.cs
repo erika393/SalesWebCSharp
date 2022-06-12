@@ -53,6 +53,12 @@ namespace SalesWebMvc.Services
             }
         }
 
+        public List<SalesRecord> FindAllSales(int? id)
+        {
+            var seller = FindById(id);
+            return seller.Sales.ToList();
+        }
+
         public void Update(Seller obj)
         {
             //o any serve pra falar se existe algum dado na condicao colocada

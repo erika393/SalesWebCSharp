@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "New Sale";
 
-    //O nome da view deve ser igual ao metodo do SellersController
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -11,10 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <!--abaixo chamaremos o metodo create, mas do post e nao do get como no index no button
-        Create New-->
         <form asp-action="NewSale" asp-route-id="@Model.SellerId">
-            <!--edit no metodo post-->
             <input type="hidden" asp-for="@Model.SellerId"  name="Id" />
             <div class="form-group">
                 <label asp-for="SalesRecord.Date" class="control-label"></label>
@@ -35,7 +31,6 @@
     </div>
 </div>
 
-<!--o js abaixo ira habilitar o lado do cliente para nos mostrarmos os erros possiveis-->
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

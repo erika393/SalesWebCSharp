@@ -27,6 +27,11 @@ namespace SalesWebMvc.Controllers
             return View();
         }
 
+        public IActionResult Success()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)
@@ -82,10 +87,13 @@ namespace SalesWebMvc.Controllers
                 var viewModel = new SalesRecordFormViewModel { SalesRecord = obj};
                 return View(viewModel); 
             }
+            obj.Id = (_salesRecordService.ExistId(obj.Id)) ? _salesRecordService.GetNewId() : obj.Id;
+
             var seller = _sellerService.FindById(id);
             seller.AddSales(obj);
+            var sellerCount = seller.Sales.Count;
             _salesRecordService.Insert(obj);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Success));
         }
         
     }

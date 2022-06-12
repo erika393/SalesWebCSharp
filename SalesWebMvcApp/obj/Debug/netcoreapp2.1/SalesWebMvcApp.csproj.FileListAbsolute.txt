@@ -56,3 +56,5 @@ C:\Users\Dell\Desktop\Projects\SalesWebMvcApp\SalesWebMvcApp\obj\Debug\netcoreap
 C:\Users\Dell\Desktop\Projects\SalesWebMvcApp\SalesWebMvcApp\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Dell\Desktop\Projects\SalesWebMvcApp\SalesWebMvcApp\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
 C:\Users\Dell\Desktop\Projects\SalesWebMvcApp\SalesWebMvcApp\obj\Debug\netcoreapp2.1\Razor\Views\SalesRecords\NewSale.cshtml.g.cs
+C:\Users\Dell\Desktop\Projects\SalesWebMvcApp\SalesWebMvcApp\obj\Debug\netcoreapp2.1\Razor\Views\SalesRecords\ViewSales.cshtml.g.cs
+C:\Users\Dell\Desktop\Projects\SalesWebMvcApp\SalesWebMvcApp\obj\Debug\netcoreapp2.1\Razor\Views\SalesRecords\Success.cshtml.g.cs
