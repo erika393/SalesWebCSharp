@@ -23,7 +23,7 @@ namespace SalesWebMvc.Services
         public List<Seller> FindAll()
         {
             //precisa colocar await para falar ao compilador q essa chamada eh assincrona
-            return _context.Seller.ToList();
+            return _context.Seller.Include(obj => obj.Sales).Include(obj => obj.Department).ToList();
 
         }
 
