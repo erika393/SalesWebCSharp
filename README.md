@@ -4,7 +4,7 @@ Sales management CRUD project
 ## 📋 Prerequisites
 Before starting, make sure you have met the prerequisites.
 * You installed Visual Studio 2019
-* You installed .NET 2.1
+* You installed .NET Core 2.1
 * You installed MySQL
 
 
