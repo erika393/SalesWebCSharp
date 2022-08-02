@@ -21,14 +21,9 @@ To use it, follow these steps:
   
       * `$ /etc/init.d/mysql start`
 
-### Moviecrudapp
-1. `$ cd moviecrudapp`
-2. `$ npm start or $ yarn start`
-
-### MovieCrudAPI
-1. Open in your Visual Studio 2019
-2. Change your MySQL database data `saleswebmvcapp/appsettings.json`
-3. Execute
+2. Open the app in your Visual Studio 2019
+3. Change your MySQL database data `saleswebmvcapp/appsettings.json`
+4. Execute
 
 
 ## ✅ Functionalities
